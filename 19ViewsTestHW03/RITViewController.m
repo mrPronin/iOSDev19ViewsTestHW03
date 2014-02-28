@@ -43,11 +43,7 @@
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     
-    NSLog(@"\n");
-    NSLog(@"From: %@", [self NSStringFromUIInterfaceOrientation:fromInterfaceOrientation]);
-    NSLog(@"To: %@", [self NSStringFromUIInterfaceOrientation:self.interfaceOrientation]);
-    NSLog(@"Frame: width = %f, height = %f", CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
-    NSLog(@"Bounds: width = %f, height = %f", CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
+    [self changeColor];
     
 }
 
@@ -120,6 +116,70 @@
         }
         
         y+= self.cellSize;
+    }
+}
+
+- (void) changeColor {
+    
+    UIColor* color;
+    
+    switch (arc4random() % 15) {
+            
+        case 0:
+            color = [UIColor blackColor];
+            break;
+            
+        case 1:
+            color = [UIColor darkGrayColor];
+            break;
+            
+        case 2:
+            color = [UIColor lightGrayColor];
+            break;
+            
+        case 3:
+            color = [UIColor grayColor];
+            break;
+            
+        case 4:
+            color = [UIColor redColor];
+            break;
+            
+        case 5:
+            color = [UIColor greenColor];
+            break;
+            
+        case 6:
+            color = [UIColor blueColor];
+            break;
+            
+        case 7:
+            color = [UIColor cyanColor];
+            break;
+            
+        case 8:
+            color = [UIColor yellowColor];
+            break;
+            
+        case 9:
+            color = [UIColor magentaColor];
+            break;
+            
+        case 10:
+            color = [UIColor orangeColor];
+            break;
+            
+        case 11:
+            color = [UIColor purpleColor];
+            break;
+            
+        case 12:
+            color = [UIColor brownColor];
+            break;
+    }
+    
+    for (UIView* view in [[self.chessboard.subviews objectAtIndex:0] subviews]) {
+        view.backgroundColor = color;
     }
 }
 
